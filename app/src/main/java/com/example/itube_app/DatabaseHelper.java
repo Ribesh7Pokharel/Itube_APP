@@ -146,10 +146,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put("user_id", userId);
         values.put("video_url", videoUrl);
-        values.put("playlist_name", playlistName);  // Assuming you have a 'playlist_name' column to categorize playlists
+        values.put("playlist_name", playlistName);
         long result = db.insert("playlists", null, values);
         db.close();
         return result != -1;
     }
-
 }

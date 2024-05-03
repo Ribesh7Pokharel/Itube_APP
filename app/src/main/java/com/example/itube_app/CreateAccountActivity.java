@@ -1,6 +1,7 @@
 package com.example.itube_app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,7 +57,10 @@ public class CreateAccountActivity extends Activity {
 
         if (dbHelper.addUser(username, password, email)) {
             Toast.makeText(this, "User registered successfully", Toast.LENGTH_SHORT).show();
-            // Optionally redirect to login activity
+            Intent intent = new Intent(this, MainActivity.class);
+            // Clear all previous activities from the task stack
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
             finish();
         } else {
             Toast.makeText(this, "Failed to register user", Toast.LENGTH_SHORT).show();
